@@ -1,0 +1,17 @@
+[35m[1mScanning dependencies of target wall_follow_node[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/wall_follow_node.dir/src/wall_follow_node.cpp.o[0m
+[01m[K/sim_ws/src/wall_follow/src/wall_follow_node.cpp:[m[K In member function ‘[01m[Kvoid WallFollow::pid_control(double)[m[K’:
+[01m[K/sim_ws/src/wall_follow/src/wall_follow_node.cpp:99:76:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K)[m[K’ before ‘[01m[K;[m[K’ token
+   99 |         u += this->kd*[34m[K([m[K(error - this->prev_error)/(this->dt*pow(10.0,-9.0))[01;31m[K;[m[K}
+      |                       [34m[K~[m[K                                                    [01;31m[K^[m[K
+      |                                                                            [32m[K)[m[K
+[01m[K/sim_ws/src/wall_follow/src/wall_follow_node.cpp:102:89:[m[K [01;31m[Kerror: [m[Kinvalid operands of types ‘[01m[Kdouble[m[K’ and ‘[01m[K<unresolved overloaded function type>[m[K’ to binary ‘[01m[Koperator<<[m[K’
+  102 |         std::cout << "e_dot: " << ([01;31m[K(error - this->prev_error)/(this->dt*pow(10.0,-9.0)) << std::endl[m[K;
+      |                                    [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~[m[K
+[01m[K/sim_ws/src/wall_follow/src/wall_follow_node.cpp:102:101:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K)[m[K’ before ‘[01m[K;[m[K’ token
+  102 |         std::cout << "e_dot: " << [34m[K([m[K(error - this->prev_error)/(this->dt*pow(10.0,-9.0)) << std::endl[01;31m[K;[m[K
+      |                                   [34m[K~[m[K                                                                 [01;31m[K^[m[K
+      |                                                                                                     [32m[K)[m[K
+make[2]: *** [CMakeFiles/wall_follow_node.dir/build.make:63: CMakeFiles/wall_follow_node.dir/src/wall_follow_node.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:78: CMakeFiles/wall_follow_node.dir/all] Error 2
+make: *** [Makefile:141: all] Error 2

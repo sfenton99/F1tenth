@@ -1,0 +1,67 @@
+[35m[1mScanning dependencies of target wall_follow_node[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/wall_follow_node.dir/src/wall_follow_node.cpp.o[0m
+[01m[K/sim_ws/src/wall_follow/src/wall_follow_node.cpp:[m[K In member function ‘[01m[Kdouble WallFollow::get_error(float*, double, double, double)[m[K’:
+[01m[K/sim_ws/src/wall_follow/src/wall_follow_node.cpp:53:29:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Krange_data[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+   53 |     double get_error([01;35m[Kfloat* range_data[m[K, double dist, double a_range, double b_range)
+      |                      [01;35m[K~~~~~~~^~~~~~~~~~[m[K
+[01m[K/sim_ws/src/wall_follow/src/wall_follow_node.cpp:53:48:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kdist[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+   53 |     double get_error(float* range_data, [01;35m[Kdouble dist[m[K, double a_range, double b_range)
+      |                                         [01;35m[K~~~~~~~^~~~[m[K
+[01m[K/sim_ws/src/wall_follow/src/wall_follow_node.cpp:[m[K In member function ‘[01m[Kvoid WallFollow::pid_control(double)[m[K’:
+[01m[K/sim_ws/src/wall_follow/src/wall_follow_node.cpp:101:30:[m[K [01;31m[Kerror: [m[Kexpected identifier before ‘[01m[K([m[K’ token
+  101 |          if (abs(u) >= 0) && [01;31m[K([m[Kabs(u) < 10){
+      |                              [01;31m[K^[m[K
+[01m[K/sim_ws/src/wall_follow/src/wall_follow_node.cpp:101:30:[m[K [01;35m[Kwarning: [m[Ktaking the address of a label is non-standard [[01;35m[K-Wpedantic[m[K]
+[01m[K/sim_ws/src/wall_follow/src/wall_follow_node.cpp:103:36:[m[K [01;31m[Kerror: [m[Kexpected identifier before ‘[01m[K([m[K’ token
+  103 |         } else if (abs(u) > 10) && [01;31m[K([m[Kabs(u) < 20){
+      |                                    [01;31m[K^[m[K
+[01m[K/sim_ws/src/wall_follow/src/wall_follow_node.cpp:103:36:[m[K [01;35m[Kwarning: [m[Ktaking the address of a label is non-standard [[01;35m[K-Wpedantic[m[K]
+[01m[K/sim_ws/src/wall_follow/src/wall_follow_node.cpp:106:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kvelocity[m[K’ was not declared in this scope
+  106 |             [01;31m[Kvelocity[m[K = 0.5;
+      |             [01;31m[K^~~~~~~~[m[K
+[01m[K/sim_ws/src/wall_follow/src/wall_follow_node.cpp:109:25:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing _drive_type = struct ackermann_msgs::msg::AckermannDrive_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct ackermann_msgs::msg::AckermannDrive_<std::allocator<void> >[m[K’} has no member named ‘[01m[Kvelocity[m[K’
+  109 |         drive_msg.drive.[01;31m[Kvelocity[m[K = velocity
+      |                         [01;31m[K^~~~~~~~[m[K
+[01m[K/sim_ws/src/wall_follow/src/wall_follow_node.cpp:109:36:[m[K [01;31m[Kerror: [m[K‘[01m[Kvelocity[m[K’ was not declared in this scope
+  109 |         drive_msg.drive.velocity = [01;31m[Kvelocity[m[K
+      |                                    [01;31m[K^~~~~~~~[m[K
+[01m[K/sim_ws/src/wall_follow/src/wall_follow_node.cpp:[m[K In member function ‘[01m[Kvoid WallFollow::scan_callback(sensor_msgs::msg::LaserScan_<std::allocator<void> >::ConstSharedPtr)[m[K’:
+[01m[K/sim_ws/src/wall_follow/src/wall_follow_node.cpp:129:78:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing element_type = const struct sensor_msgs::msg::LaserScan_<std::allocator<void> >[m[K’ {aka ‘[01m[Kconst struct sensor_msgs::msg::LaserScan_<std::allocator<void> >[m[K’} has no member named ‘[01m[Kmin_angle[m[K’
+  129 |         double a_range = get_range(scan_msg->ranges, a_scan_angle, scan_msg->[01;31m[Kmin_angle[m[K, scan_msg->angle_increment);
+      |                                                                              [01;31m[K^~~~~~~~~[m[K
+[01m[K/sim_ws/src/wall_follow/src/wall_follow_node.cpp:130:78:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing element_type = const struct sensor_msgs::msg::LaserScan_<std::allocator<void> >[m[K’ {aka ‘[01m[Kconst struct sensor_msgs::msg::LaserScan_<std::allocator<void> >[m[K’} has no member named ‘[01m[Kmin_angle[m[K’
+  130 |         double b_range = get_range(scan_msg->ranges, b_scan_angle, scan_msg->[01;31m[Kmin_angle[m[K, scan_msg->angle_increment);
+      |                                                                              [01;31m[K^~~~~~~~~[m[K
+[01m[K/sim_ws/src/wall_follow/src/wall_follow_node.cpp:132:13:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K;[m[K’ before ‘[01m[Kprev_error[m[K’
+  132 |         this[01;31m[K [m[K[32m[Kprev_error[m[K = this->error;
+      |             [01;31m[K^[m[K[32m[K~~~~~~~~~~[m[K
+      |             [32m[K;[m[K
+[01m[K/sim_ws/src/wall_follow/src/wall_follow_node.cpp:132:38:[m[K [01;35m[Kwarning: [m[Kstatement has no effect [[01;35m[K-Wunused-value[m[K]
+  132 |         this prev_error = this->error[01;35m[K;[m[K
+      |                                      [01;35m[K^[m[K
+[01m[K/sim_ws/src/wall_follow/src/wall_follow_node.cpp:133:51:[m[K [01;31m[Kerror: [m[K‘[01m[Kdist_to_wall[m[K’ was not declared in this scope
+  133 |         this->error = get_error(scan_msg->ranges, [01;31m[Kdist_to_wall[m[K, a_range, b_range); // degrees
+      |                                                   [01;31m[K^~~~~~~~~~~~[m[K
+[01m[K/sim_ws/src/wall_follow/src/wall_follow_node.cpp:134:38:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K;[m[K’ before ‘[01m[Kdouble[m[K’
+  134 |         this->integral += this->error
+      |                                      [01;31m[K^[m[K
+      |                                      [32m[K;[m[K
+  135 | 
+  136 |         [32m[Kdouble[m[K timestamp = 0.0;
+      |         [32m[K~~~~~~[m[K                        
+[01m[K/sim_ws/src/wall_follow/src/wall_follow_node.cpp:137:12:[m[K [01;31m[Kerror: [m[K‘[01m[Ktimestamp[m[K’ was not declared in this scope; did you mean ‘[01m[Ktimercmp[m[K’?
+  137 |         if([01;31m[Ktimestamp[m[K != 0.0){
+      |            [01;31m[K^~~~~~~~~[m[K
+      |            [32m[Ktimercmp[m[K
+[01m[K/sim_ws/src/wall_follow/src/wall_follow_node.cpp:138:52:[m[K [01;31m[Kerror: [m[Kbase operand of ‘[01m[K->[m[K’ has non-pointer type ‘[01m[Kconst _header_type[m[K’ {aka ‘[01m[Kconst std_msgs::msg::Header_<std::allocator<void> >[m[K’}
+  138 |             this->dt = timestamp - scan_msg->header[01;31m[K->[m[Kstamp->nanosec;
+      |                                                    [01;31m[K^~[m[K
+[01m[K/sim_ws/src/wall_follow/src/wall_follow_node.cpp:140:44:[m[K [01;31m[Kerror: [m[Kbase operand of ‘[01m[K->[m[K’ has non-pointer type ‘[01m[Kconst _header_type[m[K’ {aka ‘[01m[Kconst std_msgs::msg::Header_<std::allocator<void> >[m[K’}
+  140 |         double timestamp = scan_msg->header[01;31m[K->[m[Kstamp->nanosec;
+      |                                            [01;31m[K^~[m[K
+[01m[K/sim_ws/src/wall_follow/src/wall_follow_node.cpp:140:16:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Ktimestamp[m[K’ [[01;35m[K-Wunused-variable[m[K]
+  140 |         double [01;35m[Ktimestamp[m[K = scan_msg->header->stamp->nanosec;
+      |                [01;35m[K^~~~~~~~~[m[K
+make[2]: *** [CMakeFiles/wall_follow_node.dir/build.make:63: CMakeFiles/wall_follow_node.dir/src/wall_follow_node.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:78: CMakeFiles/wall_follow_node.dir/all] Error 2
+make: *** [Makefile:141: all] Error 2

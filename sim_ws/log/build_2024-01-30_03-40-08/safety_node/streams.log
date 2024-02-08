@@ -1,0 +1,24 @@
+[0.390s] Invoking command in '/sim_ws/src/safety_node': PYTHONPATH=/sim_ws/build/safety_node/prefix_override:/sim_ws/install/safety_node/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/safety_node build --build-base /sim_ws/build/safety_node/build install --record /sim_ws/build/safety_node/install.log --install-scripts $base/lib/safety_node --single-version-externally-managed
+[0.483s] running egg_info
+[0.484s] writing ../../build/safety_node/safety_node.egg-info/PKG-INFO
+[0.484s] writing dependency_links to ../../build/safety_node/safety_node.egg-info/dependency_links.txt
+[0.484s] writing entry points to ../../build/safety_node/safety_node.egg-info/entry_points.txt
+[0.484s] writing requirements to ../../build/safety_node/safety_node.egg-info/requires.txt
+[0.484s] writing top-level names to ../../build/safety_node/safety_node.egg-info/top_level.txt
+[0.511s] reading manifest file '../../build/safety_node/safety_node.egg-info/SOURCES.txt'
+[0.511s] writing manifest file '../../build/safety_node/safety_node.egg-info/SOURCES.txt'
+[0.512s] running build
+[0.512s] running build_py
+[0.512s] copying safety_node/TTC.py -> /sim_ws/build/safety_node/build/lib/safety_node
+[0.513s] running install
+[0.513s] running install_lib
+[0.514s] copying /sim_ws/build/safety_node/build/lib/safety_node/TTC.py -> /sim_ws/install/safety_node/lib/python3.8/site-packages/safety_node
+[0.514s] byte-compiling /sim_ws/install/safety_node/lib/python3.8/site-packages/safety_node/TTC.py to TTC.cpython-38.pyc
+[0.515s] running install_data
+[0.516s] running install_egg_info
+[0.517s] removing '/sim_ws/install/safety_node/lib/python3.8/site-packages/safety_node-0.0.0-py3.8.egg-info' (and everything under it)
+[0.517s] Copying ../../build/safety_node/safety_node.egg-info to /sim_ws/install/safety_node/lib/python3.8/site-packages/safety_node-0.0.0-py3.8.egg-info
+[0.518s] running install_scripts
+[0.526s] Installing TTC script to /sim_ws/install/safety_node/lib/safety_node
+[0.527s] writing list of installed files to '/sim_ws/build/safety_node/install.log'
+[0.551s] Invoked command in '/sim_ws/src/safety_node' returned '0': PYTHONPATH=/sim_ws/build/safety_node/prefix_override:/sim_ws/install/safety_node/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/safety_node build --build-base /sim_ws/build/safety_node/build install --record /sim_ws/build/safety_node/install.log --install-scripts $base/lib/safety_node --single-version-externally-managed

@@ -1,0 +1,21 @@
+[0.399s] Invoking command in '/sim_ws/src/safety_node': PYTHONPATH=/sim_ws/build/safety_node/prefix_override:/sim_ws/install/safety_node/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/safety_node build --build-base /sim_ws/build/safety_node/build install --record /sim_ws/build/safety_node/install.log --install-scripts $base/lib/safety_node --single-version-externally-managed
+[0.486s] running egg_info
+[0.487s] writing ../../build/safety_node/safety_node.egg-info/PKG-INFO
+[0.487s] writing dependency_links to ../../build/safety_node/safety_node.egg-info/dependency_links.txt
+[0.487s] writing entry points to ../../build/safety_node/safety_node.egg-info/entry_points.txt
+[0.487s] writing requirements to ../../build/safety_node/safety_node.egg-info/requires.txt
+[0.487s] writing top-level names to ../../build/safety_node/safety_node.egg-info/top_level.txt
+[0.508s] reading manifest file '../../build/safety_node/safety_node.egg-info/SOURCES.txt'
+[0.509s] writing manifest file '../../build/safety_node/safety_node.egg-info/SOURCES.txt'
+[0.509s] running build
+[0.509s] running build_py
+[0.510s] running install
+[0.510s] running install_lib
+[0.511s] running install_data
+[0.511s] running install_egg_info
+[0.512s] removing '/sim_ws/install/safety_node/lib/python3.8/site-packages/safety_node-0.0.0-py3.8.egg-info' (and everything under it)
+[0.512s] Copying ../../build/safety_node/safety_node.egg-info to /sim_ws/install/safety_node/lib/python3.8/site-packages/safety_node-0.0.0-py3.8.egg-info
+[0.513s] running install_scripts
+[0.523s] Installing TTC script to /sim_ws/install/safety_node/lib/safety_node
+[0.523s] writing list of installed files to '/sim_ws/build/safety_node/install.log'
+[0.548s] Invoked command in '/sim_ws/src/safety_node' returned '0': PYTHONPATH=/sim_ws/build/safety_node/prefix_override:/sim_ws/install/safety_node/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/safety_node build --build-base /sim_ws/build/safety_node/build install --record /sim_ws/build/safety_node/install.log --install-scripts $base/lib/safety_node --single-version-externally-managed

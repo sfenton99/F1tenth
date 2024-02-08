@@ -1,0 +1,14 @@
+[0.099s] Invoking command in '/sim_ws/build/wall_follow': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /sim_ws/build/wall_follow -- -j10 -l10
+[0.123s] [35m[1mScanning dependencies of target wall_follow_node[0m
+[0.162s] [ 50%] [32mBuilding CXX object CMakeFiles/wall_follow_node.dir/src/wall_follow_node.cpp.o[0m
+[0.779s] [01m[K/sim_ws/src/wall_follow/src/wall_follow_node.cpp:[m[K In member function ‘[01m[Kvoid WallFollow::scan_callback(sensor_msgs::msg::LaserScan_<std::allocator<void> >::ConstSharedPtr)[m[K’:
+[0.779s] [01m[K/sim_ws/src/wall_follow/src/wall_follow_node.cpp:140:16:[m[K [01;31m[Kerror: [m[Kredeclaration of ‘[01m[Kdouble timestamp[m[K’
+[0.779s]   140 |         double [01;31m[Ktimestamp[m[K = scan_msg->header.stamp.nanosec;
+[0.779s]       |                [01;31m[K^~~~~~~~~[m[K
+[0.779s] [01m[K/sim_ws/src/wall_follow/src/wall_follow_node.cpp:136:16:[m[K [01;36m[Knote: [m[K‘[01m[Kdouble timestamp[m[K’ previously declared here
+[0.779s]   136 |         double [01;36m[Ktimestamp[m[K = 0.0;
+[0.779s]       |                [01;36m[K^~~~~~~~~[m[K
+[1.509s] make[2]: *** [CMakeFiles/wall_follow_node.dir/build.make:63: CMakeFiles/wall_follow_node.dir/src/wall_follow_node.cpp.o] Error 1
+[1.509s] make[1]: *** [CMakeFiles/Makefile2:78: CMakeFiles/wall_follow_node.dir/all] Error 2
+[1.509s] make: *** [Makefile:141: all] Error 2
+[1.511s] Invoked command in '/sim_ws/build/wall_follow' returned '2': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /sim_ws/build/wall_follow -- -j10 -l10
