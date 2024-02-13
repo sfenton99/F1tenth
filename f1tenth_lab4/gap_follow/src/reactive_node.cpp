@@ -33,7 +33,7 @@ private:
     float Kp = 0.5;
     float Kd = 0;
     double L = 0.2; //lookahead distance
-    double dist_to_wall = 0.6;
+    double dist_to_wall = 0.6; //test
 
     
     rclcpp::Subscription<sensor_msgs::msg::LaserScan>::SharedPtr lasersub;
