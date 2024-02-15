@@ -27,13 +27,14 @@ public:
 
 private:
     //TUNABLE PARAMETERS
-    int window_size = 2;  //moving average filter on lidar data
+    int window_size = 5;  //moving average filter on lidar data
     int threshold = 2.5;  //dist threshold to be called a gap
-    int min_wall_dist = 1.0; // if dist to wall less than val, wont turn
-    float Kp = 0.5;
+    int min_wall_dist = 0.3; // if dist to wall less than val, wont turn
+    int bubble_size = 2;
+    float Kp = 1;
     float Kd = 0;
     double L = 0.2; //lookahead distance
-    double dist_to_wall = 0.6; //test
+    double dist_to_wall = 0.4; //test
 
     
     rclcpp::Subscription<sensor_msgs::msg::LaserScan>::SharedPtr lasersub;
@@ -65,13 +66,34 @@ private:
         // 1.Setting each value to the mean over some window
         // 2.Rejecting high values (eg. > 3m)
         int window_size = this->window_size;
+        float max_range = 10.0;
+        float min_range = 100; //initialize large
+        int bubble_size = this->bubble_size;
+        float max_found = 0;
 
-        //Handle Nans and Inf
+        //Handle Nans and Inf and set max range
         for(size_t i=0; i < range_data.size(); i++){
-            if (std::isnan(range_data[i]) || std::isinf(range_data[i])){
-                range_data[i] = 10; //large number
+            if (std::isnan(range_data[i]) || std::isinf(range_data[i] || range_data[i] > max_range)){
+                range_data[i] = max_range; //large number
+            }
+            max_found = std::max(range_data[i], max_found);
+        }
+        // std::cout << "Max Lidar Reading: " << max_found << std::endl;
+
+        //take nearest obstacle and create safety bubble
+        int obstacle_index;
+        for(size_t i=0; i < range_data.size(); i++){
+            if(range_data[i] < min_range){
+                min_range = range_data[i];
+                obstacle_index = int(i);
             }
         }
+        int min_index_possible = std::max(int(0),int((obstacle_index-floor(bubble_size/2))));
+        int max_index_possible = std::min(int((obstacle_index + ceil(bubble_size/2))) , int(range_data.size()));
+        for(int i=min_index_possible; i < max_index_possible; i++){
+            range_data[i] = 0;
+        }
+
         // moving average filter
         std::vector<float> filteredLidarData = MovingAverageFiler(range_data, window_size);
         return filteredLidarData;
@@ -110,8 +132,8 @@ private:
                 best_point=i;
             }
         }
-        return best_point;
-        // return floor((gap.first + gap.second)/2);
+        // return best_point;
+        return floor((gap.first + gap.second)/2);
     }
     double get_range(const std::vector<float> range_data, double angle, double min_angle, double angle_increment)
     {
@@ -138,20 +160,20 @@ private:
     }
 
     float controller(float heading_error_gap, double heading_error_wall, std::vector<float> ranges, float min_angle, float angle_increment){
-        float u=0;
-        int left_index = floor(((90*3.14/180) - min_angle)/angle_increment);
-        int right_index = floor(((-90*3.14/180) - min_angle)/angle_increment);
-         std::cout << "Left Side: " << ranges[left_index] << " Right Side: "<< ranges[right_index]<< std::endl;
+        float u = 0;
+        // int left_index = floor(((90*3.14/180) - min_angle)/angle_increment);
+        // int right_index = floor(((-90*3.14/180) - min_angle)/angle_increment);
+        //  std::cout << "Left Side: " << ranges[left_index] << " Right Side: "<< ranges[right_index]<< std::endl;
 
 
-        if (ranges[left_index] < this->min_wall_dist || ranges[right_index] < this->min_wall_dist){
-            u = this->Kp*heading_error_wall;
-            std::cout << "WALL FOLLOWING" << std::endl;
-        }
-        else{
+        // if (ranges[left_index] < this->min_wall_dist || ranges[right_index] < this->min_wall_dist){
+        //     u = this->Kp*heading_error_wall;
+        //     std::cout << "WALL FOLLOWING" << std::endl;
+        // }
+        // else{
         u = this->Kp*heading_error_gap;
-        std::cout << "GAP FOLLOWING" << std::endl;
-        }
+        // std::cout << "GAP FOLLOWING" << std::endl;
+        // }
 
         return u;
     }
@@ -164,16 +186,12 @@ private:
         // Find closest point to LiDAR
         // Eliminate all points inside 'bubble' (set them to zero) 
         std::vector<float> ranges_processed = preprocess_lidar(scan_msg->ranges);
-
         // Find max length gap 
         std::pair<int,int> gap = find_max_gap(ranges_processed); //two indices, start and end
-
         // Find the best point in the gap 
         int best_point = find_best_point(ranges_processed, gap);
-
         // Get heading angle associated with gap point
         float heading_err_gap = scan_msg->angle_min + best_point*scan_msg->angle_increment;
-        
         auto drive_msg = ackermann_msgs::msg::AckermannDriveStamped();
 
         //mix in some wall following
@@ -186,9 +204,8 @@ private:
         //arbitrate and control
         float u = controller(heading_err_gap, heading_err_wall, scan_msg->ranges, scan_msg->angle_min, scan_msg->angle_increment);
 
-        int steering_angle_degrees = int(heading_err_gap*180/3.14);
-
-        std::cout << "Turning: " << steering_angle_degrees << " Degrees" << std::endl;
+        int steering_angle_degrees = int(u*180/3.14);
+        // std::cout << "Turning: " << steering_angle_degrees << " Degrees" << std::endl;
         // std::cout << "Deepest point in void: " << scan_msg->ranges[best_point] << " m" << std::endl;
         // Publish Drive message
         float velocity;
@@ -196,9 +213,11 @@ private:
             velocity = 1.5;
         } else if ((abs(steering_angle_degrees) > 10) && (abs(steering_angle_degrees) <= 20)){
             velocity = 1.0;
-        } else if (abs(steering_angle_degrees) > 20){
+        } else if ((abs(steering_angle_degrees) > 20) && (abs(steering_angle_degrees) <= 30)){
             velocity = 0.5;
-        }
+        }  
+        else if (abs(steering_angle_degrees) > 30)
+        {   velocity = 0.1;}
 
         drive_msg.drive.speed = velocity;
         drive_msg.drive.steering_angle = u;
