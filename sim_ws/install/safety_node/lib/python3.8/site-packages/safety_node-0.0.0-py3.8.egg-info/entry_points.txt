@@ -1,3 +1,0 @@
-[console_scripts]
-TTC = safety_node.TTC:main
-
