@@ -43,9 +43,9 @@ private:
     //PurePursuit Stuff
     rclcpp::Publisher<ackermann_msgs::msg::AckermannDriveStamped>::SharedPtr drivepub;
     //TUNABLE PARAMETERS
-    double L = 2; //lookahead distance
-    double PGain = 0.1;
-    double velocity = 0.3;
+    double L = 0.2; //lookahead distance
+    double PGain = 0.3;
+    double velocity = 0.5;
     int step_size = 1; //step size for waypoint selection
     double max_steer = 3.14/2;
     double min_steer = -3.14/2;
@@ -75,18 +75,18 @@ private:
     //goal
     vector<float> goal;
     vector<RRT_Node>goal_path;
-    int radius = 10; //radius for rrt star
+    double radius = 20.0; //radius for rrt star
 
     const int num_samples = 500; //rrt
-    const double epsilon = 5; //rrt in grid world
+    const double epsilon = 10; //rrt in grid world
     std::vector<signed char> Occupancy;
-    int bufferCells = 3;
+    int bufferCells = 8;
 
     // random generator, use this
     std::mt19937 gen;
     std::uniform_int_distribution<int> x_dist; //only forward, validate
     std::uniform_int_distribution<int> y_dist;
-    double range = 2.0; //range around car pos for sample
+    // double range = 2.0; //range around car pos for sample
     
     //publisher function
     void visualize_goal(float &x, float &y);
