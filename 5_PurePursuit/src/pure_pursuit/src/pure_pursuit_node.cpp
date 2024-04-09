@@ -236,7 +236,7 @@ private:
         drive_msg.drive.speed = velocity;
         drive_msg.drive.steering_angle = steer;
 
-        this->drivepub->publish(drive_msg);
+        // this->drivepub->publish(drive_msg);
     }
 };
 int main(int argc, char **argv)
